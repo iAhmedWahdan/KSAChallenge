@@ -23,13 +23,13 @@ class UsersViewController: UIViewController {
     }()
     
     
-    private var searchController = UISearchController(searchResultsController: nil)
+     var searchController = UISearchController(searchResultsController: nil)
     
     private var searchText: String {
         searchController.searchBar.text ?? ""
     }
     
-    private let viewModel = UsersViewModel()
+     let viewModel = UsersViewModel()
     
     private var bag = DisposeBag()
             

@@ -12,6 +12,7 @@
 		C1253623297D55CD00A34C48 /* ForksUsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1253622297D55CD00A34C48 /* ForksUsersViewModel.swift */; };
 		C1253625297D6BD000A34C48 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1253624297D6BCF00A34C48 /* APIError.swift */; };
 		C1253627297D7D9A00A34C48 /* ToastHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1253626297D7D9A00A34C48 /* ToastHelper.swift */; };
+		C1253631297D8BB500A34C48 /* KSAChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1253630297D8BB500A34C48 /* KSAChallengeTests.swift */; };
 		C1C705A8297C0187003A31E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C705A7297C0187003A31E3 /* AppDelegate.swift */; };
 		C1C705AA297C0187003A31E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C705A9297C0187003A31E3 /* SceneDelegate.swift */; };
 		C1C705B1297C0189003A31E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1C705B0297C0189003A31E3 /* Assets.xcassets */; };
@@ -33,7 +34,18 @@
 		C1C705F2297C8CCB003A31E3 /* UIView+NVActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C705F1297C8CCB003A31E3 /* UIView+NVActivityIndicatorView.swift */; };
 		C1C705F8297C9DBC003A31E3 /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C705F6297C9DBC003A31E3 /* RepositoryTableViewCell.swift */; };
 		C1C705F9297C9DBC003A31E3 /* RepositoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C705F7297C9DBC003A31E3 /* RepositoryTableViewCell.xib */; };
+		DCA03291946E05D1B992FC37 /* Pods_KSAChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F47933E952F6A016385A6FAD /* Pods_KSAChallengeTests.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C1253632297D8BB500A34C48 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C1C7059C297C0187003A31E3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C1C705A3297C0187003A31E3;
+			remoteInfo = KSAChallenge;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2978CA4A7496C745D6DFAC53 /* Pods-KSAChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSAChallenge.debug.xcconfig"; path = "Target Support Files/Pods-KSAChallenge/Pods-KSAChallenge.debug.xcconfig"; sourceTree = "<group>"; };
@@ -43,6 +55,8 @@
 		C1253622297D55CD00A34C48 /* ForksUsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForksUsersViewModel.swift; sourceTree = "<group>"; };
 		C1253624297D6BCF00A34C48 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		C1253626297D7D9A00A34C48 /* ToastHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastHelper.swift; sourceTree = "<group>"; };
+		C125362E297D8BB500A34C48 /* KSAChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KSAChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1253630297D8BB500A34C48 /* KSAChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KSAChallengeTests.swift; sourceTree = "<group>"; };
 		C1C705A4297C0187003A31E3 /* KSAChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSAChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C705A7297C0187003A31E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1C705A9297C0187003A31E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,9 +80,20 @@
 		C1C705F1297C8CCB003A31E3 /* UIView+NVActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+NVActivityIndicatorView.swift"; sourceTree = "<group>"; };
 		C1C705F6297C9DBC003A31E3 /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
 		C1C705F7297C9DBC003A31E3 /* RepositoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositoryTableViewCell.xib; sourceTree = "<group>"; };
+		CCA620EE132094E1F123375F /* Pods-KSAChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSAChallengeTests.debug.xcconfig"; path = "Target Support Files/Pods-KSAChallengeTests/Pods-KSAChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EDB117F9FA1C7B187286BD7F /* Pods-KSAChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSAChallengeTests.release.xcconfig"; path = "Target Support Files/Pods-KSAChallengeTests/Pods-KSAChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
+		F47933E952F6A016385A6FAD /* Pods_KSAChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KSAChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C125362B297D8BB500A34C48 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCA03291946E05D1B992FC37 /* Pods_KSAChallengeTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C1C705A1297C0187003A31E3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -85,6 +110,8 @@
 			children = (
 				2978CA4A7496C745D6DFAC53 /* Pods-KSAChallenge.debug.xcconfig */,
 				80B65BDC0F3A0F4B74066E24 /* Pods-KSAChallenge.release.xcconfig */,
+				CCA620EE132094E1F123375F /* Pods-KSAChallengeTests.debug.xcconfig */,
+				EDB117F9FA1C7B187286BD7F /* Pods-KSAChallengeTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -93,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				5C4D4A158D1780845F7331AB /* Pods_KSAChallenge.framework */,
+				F47933E952F6A016385A6FAD /* Pods_KSAChallengeTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -106,10 +134,19 @@
 			path = ForksUsersViewController;
 			sourceTree = "<group>";
 		};
+		C125362F297D8BB500A34C48 /* KSAChallengeTests */ = {
+			isa = PBXGroup;
+			children = (
+				C1253630297D8BB500A34C48 /* KSAChallengeTests.swift */,
+			);
+			path = KSAChallengeTests;
+			sourceTree = "<group>";
+		};
 		C1C7059B297C0187003A31E3 = {
 			isa = PBXGroup;
 			children = (
 				C1C705A6297C0187003A31E3 /* KSAChallenge */,
+				C125362F297D8BB500A34C48 /* KSAChallengeTests */,
 				C1C705A5297C0187003A31E3 /* Products */,
 				1FD4A596227AB09892FD46CA /* Pods */,
 				9A689A731BA0C46266C3C949 /* Frameworks */,
@@ -120,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				C1C705A4297C0187003A31E3 /* KSAChallenge.app */,
+				C125362E297D8BB500A34C48 /* KSAChallengeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -215,6 +253,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C125362D297D8BB500A34C48 /* KSAChallengeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C1253634297D8BB500A34C48 /* Build configuration list for PBXNativeTarget "KSAChallengeTests" */;
+			buildPhases = (
+				CFD45D7C86C31652CDBA9756 /* [CP] Check Pods Manifest.lock */,
+				C125362A297D8BB500A34C48 /* Sources */,
+				C125362B297D8BB500A34C48 /* Frameworks */,
+				C125362C297D8BB500A34C48 /* Resources */,
+				34B6620A0CF3E7A2147EDC4D /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C1253633297D8BB500A34C48 /* PBXTargetDependency */,
+			);
+			name = KSAChallengeTests;
+			productName = KSAChallengeTests;
+			productReference = C125362E297D8BB500A34C48 /* KSAChallengeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C1C705A3297C0187003A31E3 /* KSAChallenge */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C1C705B8297C0189003A31E3 /* Build configuration list for PBXNativeTarget "KSAChallenge" */;
@@ -244,6 +302,10 @@
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					C125362D297D8BB500A34C48 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = C1C705A3297C0187003A31E3;
+					};
 					C1C705A3297C0187003A31E3 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -263,11 +325,19 @@
 			projectRoot = "";
 			targets = (
 				C1C705A3297C0187003A31E3 /* KSAChallenge */,
+				C125362D297D8BB500A34C48 /* KSAChallengeTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C125362C297D8BB500A34C48 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C1C705A2297C0187003A31E3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -283,6 +353,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		34B6620A0CF3E7A2147EDC4D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KSAChallengeTests/Pods-KSAChallengeTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KSAChallengeTests/Pods-KSAChallengeTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KSAChallengeTests/Pods-KSAChallengeTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3741F2313F462803574473B7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -322,9 +409,39 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CFD45D7C86C31652CDBA9756 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KSAChallengeTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C125362A297D8BB500A34C48 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1253631297D8BB500A34C48 /* KSAChallengeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C1C705A0297C0187003A31E3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -354,6 +471,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		C1253633297D8BB500A34C48 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C1C705A3297C0187003A31E3 /* KSAChallenge */;
+			targetProxy = C1253632297D8BB500A34C48 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		C1C705B2297C0189003A31E3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -366,6 +491,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C1253635297D8BB500A34C48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCA620EE132094E1F123375F /* Pods-KSAChallengeTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D4ZCX24JVL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iAhmedWahdan.KSAChallengeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KSAChallenge.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KSAChallenge";
+			};
+			name = Debug;
+		};
+		C1253636297D8BB500A34C48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDB117F9FA1C7B187286BD7F /* Pods-KSAChallengeTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D4ZCX24JVL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iAhmedWahdan.KSAChallengeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KSAChallenge.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KSAChallenge";
+			};
+			name = Release;
+		};
 		C1C705B6297C0189003A31E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -547,6 +712,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C1253634297D8BB500A34C48 /* Build configuration list for PBXNativeTarget "KSAChallengeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C1253635297D8BB500A34C48 /* Debug */,
+				C1253636297D8BB500A34C48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C1C7059F297C0187003A31E3 /* Build configuration list for PBXProject "KSAChallenge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
