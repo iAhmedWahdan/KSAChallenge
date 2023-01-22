@@ -30,7 +30,11 @@ class UserDetailsViewModel {
             case .success(let user):
                 self.user.accept(user)
             case .failure(let error):
-                print(error.rawValue)
+                DispatchQueue.main.async {
+                    ToastHelper.showAlert(WithMessage: error.localizedDescription) {
+                        self.loadUsers(username: username)
+                    }
+                }
             }
         }
     }
@@ -53,7 +57,12 @@ class UserDetailsViewModel {
                     self.repositories.accept(repositories)
                 }
             case .failure(let error):
-                print(error.rawValue)
+                self.page -= 1
+                DispatchQueue.main.async {
+                    ToastHelper.showAlert(WithMessage: error.localizedDescription) {
+                        self.loadRepositories(loadingMore: loadingMore, username: username)
+                    }
+                }
             }
         }
     }

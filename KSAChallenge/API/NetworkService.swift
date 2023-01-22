@@ -11,11 +11,11 @@ struct APIConstants {
     static var baseURL: String = "https://api.github.com/"
     
     static var apiUserURL: String = {
-        return baseURL + "users/"
+        return baseURL + "users"
     }()
     
     static var apiRepoURL: String = {
-        return baseURL + "orgs/"
+        return baseURL + "repos"
     }()
     
     static var clientUrl: String = {
@@ -24,31 +24,33 @@ struct APIConstants {
         
 }
 
+// MARK: - Users
+
 class NetworkService {
     static let shared = NetworkService()
     
-    func getUsersList(for username: String, page: Int, completed: @escaping (Result<[Users], ResponseError>) -> Void ) {
-        let serviceUrl = APIConstants.apiUserURL + "\(username)/followers?per_page=100&page=\(page)" + APIConstants.clientUrl
+    func getUsersList(page: Int, completed: @escaping (Result<[Users], APIError>) -> Void ) {
+        let serviceUrl = APIConstants.apiUserURL + "?per_page=100&page=\(page)" + APIConstants.clientUrl
         
         guard let url = URL(string: serviceUrl) else {
-            completed(.failure(.wrongUsername))
+            completed(.failure(.badURL))
             return
         }
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
 
             if let _ = error {
-                completed(.failure(.connectionNotAvailable))
+                completed(.failure(.somethingWentWrong))
                 return
             }
-            
+
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completed(.failure(.unknownResponse))
+                completed(.failure(.badStatusCode(statusCode: 0)))
                 return
             }
-            
+
             guard let data = data else {
-                completed(.failure(.invalidData))
+                completed(.failure(.jwtError))
                 return
             }
             
@@ -58,35 +60,35 @@ class NetworkService {
                 let users = try decoder.decode([Users].self, from: data)
                 completed(.success(users))
             } catch  {
-                completed(.failure(.invalidData))
+                completed(.failure(.jsonDecodingFailed))
             }
     
         }
         task.resume()
     }
     
-    func getUser(for username: String, completed: @escaping (Result<User, ResponseError>) -> Void ) {
-        let serviceUrl = APIConstants.apiUserURL + "\(username)" + APIConstants.clientUrl
+    func getUser(for username: String, completed: @escaping (Result<User, APIError>) -> Void ) {
+        let serviceUrl = APIConstants.apiUserURL + "/\(username)" + APIConstants.clientUrl
         
         guard let url = URL(string: serviceUrl) else {
-            completed(.failure(.wrongUsername))
+            completed(.failure(.badURL))
             return
         }
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
 
             if let _ = error {
-                completed(.failure(.connectionNotAvailable))
+                completed(.failure(.somethingWentWrong))
                 return
             }
-            
+
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completed(.failure(.unknownResponse))
+                completed(.failure(.badStatusCode(statusCode: 0)))
                 return
             }
-            
+
             guard let data = data else {
-                completed(.failure(.invalidData))
+                completed(.failure(.jwtError))
                 return
             }
             
@@ -96,7 +98,7 @@ class NetworkService {
                 let users = try decoder.decode(User.self, from: data)
                 completed(.success(users))
             } catch  {
-                completed(.failure(.invalidData))
+                completed(.failure(.jsonDecodingFailed))
             }
     
         }
@@ -104,92 +106,89 @@ class NetworkService {
     }
 }
 
+// MARK: - getRepositoriesList
+
 extension NetworkService {
     
-    func getRepositoriesList(for username: String, page: Int, completed: @escaping (Result<[Repositories], ResponseError>) -> Void ) {
-        let serviceUrl = APIConstants.apiUserURL + "\(username)/repositories?per_page=100&page=\(page)" + APIConstants.clientUrl
-        
+    func getRepositoriesList(for username: String, page: Int, completed: @escaping (Result<[Repositories], APIError>) -> Void ) {
+        let serviceUrl = APIConstants.apiUserURL + "/\(username)/repos?per_page=100&page=\(page)" + APIConstants.clientUrl
+
         guard let url = URL(string: serviceUrl) else {
-            completed(.failure(.wrongUsername))
+            completed(.failure(.badURL))
             return
         }
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
 
             if let _ = error {
-                completed(.failure(.connectionNotAvailable))
+                completed(.failure(.somethingWentWrong))
                 return
             }
-            
+
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completed(.failure(.unknownResponse))
+                completed(.failure(.badStatusCode(statusCode: 0)))
                 return
             }
-            
+
             guard let data = data else {
-                completed(.failure(.invalidData))
+                completed(.failure(.jwtError))
                 return
             }
-            
+
             do {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let users = try decoder.decode([Repositories].self, from: data)
                 completed(.success(users))
             } catch  {
-                completed(.failure(.invalidData))
+                completed(.failure(.jsonDecodingFailed))
             }
-    
+
         }
         task.resume()
     }
-    
-//    func getRepositoriesList(for username: String, page: Int, completed: @escaping (Result<[Repositories], ResponseError>) -> Void ) {
-//        let serviceUrl = APIConstants.apiRepoURL + "\(username)/repos?per_page=100&page=\(page)" + APIConstants.clientUrl
-//
-//        guard let url = URL(string: serviceUrl) else {
-//            completed(.failure(.wrongUsername))
-//            return
-//        }
-//        
-//        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-//
-//            if let _ = error {
-//                completed(.failure(.connectionNotAvailable))
-//                return
-//            }
-//
-//            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-//                completed(.failure(.unknownResponse))
-//                return
-//            }
-//
-//            guard let data = data else {
-//                completed(.failure(.invalidData))
-//                return
-//            }
-//
-//            do {
-//                let decoder = JSONDecoder()
-//                decoder.keyDecodingStrategy = .convertFromSnakeCase
-//                let users = try decoder.decode([Repositories].self, from: data)
-//                completed(.success(users))
-//            } catch  {
-//                completed(.failure(.invalidData))
-//            }
-//
-//        }
-//        task.resume()
-//    }
 }
 
-enum ResponseError: String, Error {
 
-    case wrongUsername = "Wrong username, try another username"
+// MARK: - ForksUsers
 
-    case unknownResponse = "Invalid server response"
+extension NetworkService {
     
-    case invalidData = "invalid data received"
+    func getForksUsersList(for ownerRepo: String, page: Int, completed: @escaping (Result<[ForksUsers], APIError>) -> Void ) {
+        let serviceUrl = APIConstants.apiRepoURL + "/\(ownerRepo)/forks?per_page=100&page=\(page)" + APIConstants.clientUrl
 
-    case connectionNotAvailable = "Internet Connection not Available!"
+        guard let url = URL(string: serviceUrl) else {
+            completed(.failure(.badURL))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+
+            if let _ = error {
+                completed(.failure(.somethingWentWrong))
+                return
+            }
+
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completed(.failure(.badStatusCode(statusCode: 0)))
+                return
+            }
+
+            guard let data = data else {
+                completed(.failure(.jwtError))
+                return
+            }
+
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let users = try decoder.decode([ForksUsers].self, from: data)
+                completed(.success(users))
+            } catch  {
+                completed(.failure(.jsonDecodingFailed))
+            }
+
+        }
+        task.resume()
+    }
 }

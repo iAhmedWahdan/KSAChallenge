@@ -35,6 +35,7 @@ class UserDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Repositories"
         navigationController?.navigationBar.prefersLargeTitles = false
         self.viewModel.loadUsers(username: user.login)
         setupViewBindings()
@@ -80,13 +81,16 @@ extension UserDetailsViewController {
             cellType: RepositoryTableViewCell.self
         )) { (index, repository, cell) in
             cell.setupCell(repository: repository)
+            cell.viewForksHandler = { [weak self] in
+                guard let self = self else { return }
+                self.show(ForksUsersViewController(repo: repository), sender: nil)
+            }
         }.disposed(by: bag)
 
-        tableView.rx.modelSelected(Repositories.self).bind { [weak self] user in
-            guard let self = self else { return }
-            
-            
-        }.disposed(by: bag)
+//        tableView.rx.modelSelected(Repositories.self).bind { [weak self] user in
+//            guard let self = self else { return }
+//            
+//        }.disposed(by: bag)
 
         tableView.rx.willDisplayCell.map {
             $1
@@ -94,15 +98,15 @@ extension UserDetailsViewController {
             ($0, $1)
         }.filter {
             $1.count > 99 && $1.count - 1 == $0.row
-        }.bind { [weak self] users, indexPath in
+        }.bind { [weak self] repositories, indexPath in
             guard let self = self else { return }
-            self.viewModel.loadUsers(loadingMore: true, username: self.user.login)
+            
         }.disposed(by: bag)
         
         tableView.refreshControl = UIRefreshControl.init()
         tableView.refreshControl?.rx.controlEvent(.valueChanged).bind { [weak self] index in
             guard let self = self else { return }
-            self.viewModel.loadUsers(username: user.login)
+            self.viewModel.loadUsers(username: self.user.login)
             self.tableView.refreshControl?.endRefreshing()
         }.disposed(by: bag)
     }

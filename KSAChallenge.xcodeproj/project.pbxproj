@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		96F81B6EEE3D4B47AC687B1A /* Pods_KSAChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C4D4A158D1780845F7331AB /* Pods_KSAChallenge.framework */; };
+		C1253620297D4EFC00A34C48 /* ForksUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C125361F297D4EFC00A34C48 /* ForksUsersViewController.swift */; };
+		C1253623297D55CD00A34C48 /* ForksUsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1253622297D55CD00A34C48 /* ForksUsersViewModel.swift */; };
+		C1253625297D6BD000A34C48 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1253624297D6BCF00A34C48 /* APIError.swift */; };
+		C1253627297D7D9A00A34C48 /* ToastHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1253626297D7D9A00A34C48 /* ToastHelper.swift */; };
 		C1C705A8297C0187003A31E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C705A7297C0187003A31E3 /* AppDelegate.swift */; };
 		C1C705AA297C0187003A31E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C705A9297C0187003A31E3 /* SceneDelegate.swift */; };
 		C1C705B1297C0189003A31E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1C705B0297C0189003A31E3 /* Assets.xcassets */; };
@@ -35,6 +39,10 @@
 		2978CA4A7496C745D6DFAC53 /* Pods-KSAChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSAChallenge.debug.xcconfig"; path = "Target Support Files/Pods-KSAChallenge/Pods-KSAChallenge.debug.xcconfig"; sourceTree = "<group>"; };
 		5C4D4A158D1780845F7331AB /* Pods_KSAChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KSAChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80B65BDC0F3A0F4B74066E24 /* Pods-KSAChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSAChallenge.release.xcconfig"; path = "Target Support Files/Pods-KSAChallenge/Pods-KSAChallenge.release.xcconfig"; sourceTree = "<group>"; };
+		C125361F297D4EFC00A34C48 /* ForksUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForksUsersViewController.swift; sourceTree = "<group>"; };
+		C1253622297D55CD00A34C48 /* ForksUsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForksUsersViewModel.swift; sourceTree = "<group>"; };
+		C1253624297D6BCF00A34C48 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		C1253626297D7D9A00A34C48 /* ToastHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastHelper.swift; sourceTree = "<group>"; };
 		C1C705A4297C0187003A31E3 /* KSAChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSAChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C705A7297C0187003A31E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1C705A9297C0187003A31E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,7 +86,6 @@
 				2978CA4A7496C745D6DFAC53 /* Pods-KSAChallenge.debug.xcconfig */,
 				80B65BDC0F3A0F4B74066E24 /* Pods-KSAChallenge.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -88,6 +95,15 @@
 				5C4D4A158D1780845F7331AB /* Pods_KSAChallenge.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C1253621297D4F0B00A34C48 /* ForksUsersViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C125361F297D4EFC00A34C48 /* ForksUsersViewController.swift */,
+				C1253622297D55CD00A34C48 /* ForksUsersViewModel.swift */,
+			);
+			path = ForksUsersViewController;
 			sourceTree = "<group>";
 		};
 		C1C7059B297C0187003A31E3 = {
@@ -118,6 +134,7 @@
 				C1C705DA297C2B52003A31E3 /* API */,
 				C1C705C3297C058C003A31E3 /* UsersViewController */,
 				C1C705EA297C6B70003A31E3 /* UserDetails */,
+				C1253621297D4F0B00A34C48 /* ForksUsersViewController */,
 				C1C705B0297C0189003A31E3 /* Assets.xcassets */,
 				C1C705D3297C245C003A31E3 /* Support */,
 				C1C705B2297C0189003A31E3 /* LaunchScreen.storyboard */,
@@ -143,6 +160,7 @@
 				C1C705D1297C2459003A31E3 /* UIView+Extensions.swift */,
 				C1C705DE297C35D2003A31E3 /* Kingfisher+Image.swift */,
 				C1C705F1297C8CCB003A31E3 /* UIView+NVActivityIndicatorView.swift */,
+				C1253626297D7D9A00A34C48 /* ToastHelper.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -168,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				C1C705D5297C2A53003A31E3 /* NetworkService.swift */,
+				C1253624297D6BCF00A34C48 /* APIError.swift */,
 				C1C705D9297C2B4A003A31E3 /* Model */,
 			);
 			path = API;
@@ -317,12 +336,16 @@
 				C1C705F2297C8CCB003A31E3 /* UIView+NVActivityIndicatorView.swift in Sources */,
 				C1C705C1297C0586003A31E3 /* UsersViewController.swift in Sources */,
 				C1C705A8297C0187003A31E3 /* AppDelegate.swift in Sources */,
+				C1253627297D7D9A00A34C48 /* ToastHelper.swift in Sources */,
+				C1253623297D55CD00A34C48 /* ForksUsersViewModel.swift in Sources */,
+				C1253625297D6BD000A34C48 /* APIError.swift in Sources */,
 				C1C705D6297C2A53003A31E3 /* NetworkService.swift in Sources */,
 				C1C705D0297C23CE003A31E3 /* AppColors.swift in Sources */,
 				C1C705E8297C6B6B003A31E3 /* UserDetailsViewController.swift in Sources */,
 				C1C705CD297C1EA7003A31E3 /* UserTableViewCell.swift in Sources */,
 				C1C705F8297C9DBC003A31E3 /* RepositoryTableViewCell.swift in Sources */,
 				C1C705EE297C763D003A31E3 /* UserDetailsViewModel.swift in Sources */,
+				C1253620297D4EFC00A34C48 /* ForksUsersViewController.swift in Sources */,
 				C1C705D2297C2459003A31E3 /* UIView+Extensions.swift in Sources */,
 				C1C705D8297C2B44003A31E3 /* Models.swift in Sources */,
 				C1C705AA297C0187003A31E3 /* SceneDelegate.swift in Sources */,

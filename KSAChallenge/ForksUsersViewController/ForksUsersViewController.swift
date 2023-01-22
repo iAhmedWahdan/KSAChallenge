@@ -1,15 +1,15 @@
 //
-//  UsersViewController.swift
+//  ForksUsersViewController.swift
 //  KSAChallenge
 //
-//  Created by Ahmed Wahdan on 21/01/2023.
+//  Created by Ahmed Wahdan on 22/01/2023.
 //
 
 import UIKit
 import RxSwift
 import RxCocoa
 
-class UsersViewController: UIViewController {
+class ForksUsersViewController: UIViewController {
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -22,23 +22,29 @@ class UsersViewController: UIViewController {
         return tableView
     }()
     
-    
-    private var searchController = UISearchController(searchResultsController: nil)
-    
-    private var searchText: String {
-        searchController.searchBar.text ?? ""
+    var ownerRepo: String {
+        return "\(repo.owner.login)/\(repo.name)"
+    }
+
+    let repo: Repositories
+    init(repo: Repositories) {
+        self.repo = repo
+        super.init(nibName: nil, bundle: nil)
     }
     
-    private let viewModel = UsersViewModel()
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    let viewModel = ForksUsersViewModel()
     
     private var bag = DisposeBag()
-            
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Users"
+        navigationItem.title = "Forks"
         setupTableView()
-        setupSearchController()
-        setupViewBindings()
         reloadUsers()
     }
     
@@ -47,10 +53,9 @@ class UsersViewController: UIViewController {
     }
     
     func reloadUsers() {
-        self.searchController.searchBar.text = ""
-        self.viewModel.loadUsers(loadingMore: false)
+        self.viewModel.loadForksUsers(loadingMore: false, ownerRepo: ownerRepo)
     }
-    
+
     private func setupViewBindings() {
         self.viewModel.isLoadingData.bind { [weak self] isLoading in
             guard let self = self else { return }
@@ -61,36 +66,17 @@ class UsersViewController: UIViewController {
             }
         }.disposed(by: bag)
     }
-    
-    private func setupSearchController() {
-        searchController.searchBar.searchTextField.backgroundColor = .white
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search by user name Ex: Alamofire"
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
-        
-        searchController.searchBar.rx.text.orEmpty.distinctUntilChanged().bind { [weak self] text in
-            guard let self = self else { return }
-            self.viewModel.searchUsers(searchText: text)
-        }.disposed(by: bag)
-    }
-  
 }
 
-extension UsersViewController {
+extension ForksUsersViewController {
     
     private func setupTableView() {
         viewModel.users.bind(to: tableView.rx.items(
             cellIdentifier: UserTableViewCell.className,
             cellType: UserTableViewCell.self
         )) { (index, user, cell) in
-            cell.setupCell(user: user)
-        }.disposed(by: bag)
-        
-        tableView.rx.modelSelected(Users.self).bind { [weak self] user in
-            guard let self = self else { return }
-            self.show(UserDetailsViewController(user: user), sender: nil)
+            cell.avatarImageView.setImage(with: user.owner.avatarUrl)
+            cell.nameLabel.text = user.owner.login
         }.disposed(by: bag)
         
         tableView.rx.willDisplayCell.map {
@@ -101,7 +87,7 @@ extension UsersViewController {
             $1.count > 99 && $1.count - 1 == $0.row
         }.bind { [weak self] users, indexPath in
             guard let self = self else { return }
-            self.viewModel.loadUsers(loadingMore: true)
+            self.viewModel.loadForksUsers(loadingMore: true, ownerRepo: self.ownerRepo)
         }.disposed(by: bag)
         
         tableView.refreshControl = UIRefreshControl.init()
@@ -110,21 +96,5 @@ extension UsersViewController {
             self.reloadUsers()
             self.tableView.refreshControl?.endRefreshing()
         }.disposed(by: bag)
-    }
-}
-
-public extension NSObject {
-    var className: String {
-        String(describing: type(of: self))
-    }
-    
-    class var className: String {
-        String(describing: self)
-    }
-}
-
-extension BehaviorRelay where Element: RangeReplaceableCollection {
-    func acceptAppending(_ element: [Element.Element]) {
-        accept(value + element)
     }
 }
